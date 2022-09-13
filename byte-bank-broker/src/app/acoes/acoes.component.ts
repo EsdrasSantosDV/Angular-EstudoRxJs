@@ -1,6 +1,8 @@
-import { Component } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormControl } from '@angular/forms';
-
+import {Acoes} from './modelo/acoes';
+import {AcoesService} from './acoes.service';
+import { Subscription } from 'rxjs';
 @Component({
   selector: 'app-acoes',
   templateUrl: './acoes.component.html',
@@ -8,6 +10,9 @@ import { FormControl } from '@angular/forms';
 })
 export class AcoesComponent {
   acoesInput = new FormControl();
+  acoes$ =this.acoesService.getAcoes();
 
-  constructor() {}
+  constructor(private acoesService:AcoesService) {}
+
+
 }
